@@ -26,7 +26,10 @@ namespace LucasRosinelli.Rate.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("MandatoryControllerOptionalAction", "{controller}/{action=Get}");
+            });
         }
     }
 }
