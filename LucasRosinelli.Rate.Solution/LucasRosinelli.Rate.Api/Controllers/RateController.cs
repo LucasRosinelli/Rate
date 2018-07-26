@@ -19,11 +19,11 @@ namespace LucasRosinelli.Rate.Api.Controllers
         /* Defining HTTP method GET as an empty template allow us to use the route
          * "MandatoryControllerOptionalAction" mapped at Startup; Route template
          * associates the value received to our parameter which is read from query
-         * string.
+         * string; 1 hour caching varying by currencyPair query string.
          */
-        [HttpGet("get")]
-        [Route("stuff/{currencyPair}")]
-        //[ResponseCache(Duration = 60, VaryByQueryKeys = new string[] { "currencyPair" })]
+        [HttpGet("")]
+        [Route("{currencyPair}")]
+        [ResponseCache(VaryByQueryKeys = new string[] { "currencyPair" }, Duration = 3600)]
         public decimal Get([FromQuery]string currencyPair)
         {
             var result = this._referenceStatisticApplicationService.GetRate(currencyPair);

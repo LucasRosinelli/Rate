@@ -24,16 +24,14 @@ namespace LucasRosinelli.Rate.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Enables caching
+            services.AddResponseCaching();
             services.AddMvc();
 
             services.AddSingleton<IDataContext, RateDataContextFromEcbXml>();
-
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-
             services.AddTransient<IReferenceStatisticRepository, ReferenceStatisticRepository>();
-
             services.AddTransient<IReferenceStatisticApplicationService, ReferenceStatisticApplicationService>();
-
             services.AddTransient<IHandler<DomainNotification>, DomainNotificationHandler>();
         }
 
@@ -43,6 +41,8 @@ namespace LucasRosinelli.Rate.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseResponseCaching();
 
             app.UseMvc(routes =>
             {
