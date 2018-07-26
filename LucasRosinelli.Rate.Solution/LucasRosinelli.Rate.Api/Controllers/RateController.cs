@@ -45,7 +45,7 @@ namespace LucasRosinelli.Rate.Api.Controllers
         /// <returns>Rate.</returns>
         [HttpGet("")]
         [Route("{currencyPair}")]
-        [ResponseCache(VaryByQueryKeys = new string[] { "currencyPair" }, Duration = 30)]
+        [ResponseCache(VaryByQueryKeys = new string[] { "currencyPair" }, Duration = 3600)]
         public decimal Get([FromQuery]string currencyPair)
         {
             var result = this._referenceStatisticApplicationService.GetRate(currencyPair);

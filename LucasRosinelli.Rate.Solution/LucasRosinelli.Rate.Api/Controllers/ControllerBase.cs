@@ -47,6 +47,7 @@ namespace LucasRosinelli.Rate.Api.Controllers
             {
                 this.Response.StatusCode = BadRequest().StatusCode;
                 var notifications = JsonConvert.SerializeObject(this._notifications.Notify());
+                this._notifications.Dispose();
                 this.Response.Body = new MemoryStream(Encoding.ASCII.GetBytes(notifications));
                 return default(T);
             }
