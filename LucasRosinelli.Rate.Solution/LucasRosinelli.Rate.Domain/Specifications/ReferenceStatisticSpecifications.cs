@@ -4,10 +4,19 @@ using System.Linq.Expressions;
 
 namespace LucasRosinelli.Rate.Domain.Specifications
 {
+    /// <summary>
+    /// Lambda expressions related to reference statistic.
+    /// </summary>
     public static class ReferenceStatisticSpecifications
     {
+        /// <summary>
+        /// Gets reference statistic by currency.
+        /// </summary>
+        /// <param name="currency">Currency to find.</param>
+        /// <returns>Matching reference statistic.</returns>
         public static Expression<Func<ReferenceStatistic, bool>> GetByCurrency(string currency)
         {
+            currency = currency?.ToUpper();
             return x => x.Currency == currency;
         }
     }

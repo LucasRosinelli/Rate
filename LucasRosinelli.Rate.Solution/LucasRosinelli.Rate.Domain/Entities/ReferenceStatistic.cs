@@ -18,6 +18,21 @@ namespace LucasRosinelli.Rate.Domain.Entities
         /// Euro reference rate.
         /// </summary>
         public decimal Rate { get; private set; }
+        /// <summary>
+        /// Inverse Euro reference rate.
+        /// </summary>
+        public decimal InverseRate
+        {
+            get
+            {
+                if (this.Rate == 0M)
+                {
+                    return 0M;
+                }
+
+                return 1M / this.Rate;
+            }
+        }
 
         #endregion
 
@@ -38,6 +53,10 @@ namespace LucasRosinelli.Rate.Domain.Entities
 
         #region Methods
 
+        /// <summary>
+        /// Validates reference statistic creation.
+        /// </summary>
+        /// <returns>true if is valid; otherwise, false.</returns>
         public bool Register()
         {
             return this.RegisterIsValid();
@@ -50,7 +69,7 @@ namespace LucasRosinelli.Rate.Domain.Entities
         /// <returns>Rate based on reference.</returns>
         public decimal CalculateRate(ReferenceStatistic referenceStatistic)
         {
-            return (1M / referenceStatistic.Rate) * this.Rate;
+            return referenceStatistic.InverseRate * this.Rate;
         }
 
         #endregion
