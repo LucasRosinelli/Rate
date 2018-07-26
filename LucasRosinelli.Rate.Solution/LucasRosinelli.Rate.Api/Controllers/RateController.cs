@@ -1,22 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LucasRosinelli.Rate.Domain.Contracts.ApplicationServices;
+using LucasRosinelli.Rate.SharedKernel.Contracts;
+using LucasRosinelli.Rate.SharedKernel.Events;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LucasRosinelli.Rate.Api.Controllers
 {
     [Route("[controller]")]
-    public class RateController : Controller
+    public class RateController : ControllerBase
     {
-        // Defining HTTP method GET as an empty template allow us to use the route "MandatoryControllerOptionalAction" mapped at Startup;
-        // Route template associates the value received to our parameter which is read from query string.
-        [HttpGet("")]
-        [Route("{currencyPair}")]
+        private readonly IReferenceStatisticApplicationService _referenceStatisticApplicationService;
+
+        public RateController(IReferenceStatisticApplicationService referenceStatisticApplicationService, IHandler<DomainNotification> notifications)
+            : base(notifications)
+        {
+            this._referenceStatisticApplicationService = referenceStatisticApplicationService;
+        }
+
+        /* Defining HTTP method GET as an empty template allow us to use the route
+         * "MandatoryControllerOptionalAction" mapped at Startup; Route template
+         * associates the value received to our parameter which is read from query
+         * string.
+         */
+        [HttpGet("get")]
+        [Route("stuff/{currencyPair}")]
+        //[ResponseCache(Duration = 60, VaryByQueryKeys = new string[] { "currencyPair" })]
         public decimal Get([FromQuery]string currencyPair)
         {
-            /* Questions:
-             * 1) What should I do when "currencyPair" has no value?
-             * 2) What should I do when "currencyPair" doesn't match the pattern: length equals 6?
-             * 3) Qhat should I do when a currency (both or one of them) were not found?
-             */
-            return 0.123456M;
+            var result = this._referenceStatisticApplicationService.GetRate(currencyPair);
+
+            return base.CreateResponse(result);
         }
     }
 }

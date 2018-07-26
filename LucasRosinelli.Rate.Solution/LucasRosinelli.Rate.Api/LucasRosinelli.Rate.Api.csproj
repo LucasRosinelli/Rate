@@ -16,4 +16,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LucasRosinelli.Rate.ApplicationService\LucasRosinelli.Rate.ApplicationService.csproj" />
+    <ProjectReference Include="..\LucasRosinelli.Rate.Domain\LucasRosinelli.Rate.Domain.csproj" />
+    <ProjectReference Include="..\LucasRosinelli.Rate.Infrastructure\LucasRosinelli.Rate.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

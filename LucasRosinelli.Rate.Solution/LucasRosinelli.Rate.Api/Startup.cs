@@ -1,4 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using LucasRosinelli.Rate.ApplicationService;
+using LucasRosinelli.Rate.Domain.Contracts.ApplicationServices;
+using LucasRosinelli.Rate.Domain.Contracts.Repositories;
+using LucasRosinelli.Rate.Infrastructure.Persistence;
+using LucasRosinelli.Rate.Infrastructure.Persistence.DataContext;
+using LucasRosinelli.Rate.Infrastructure.Repository;
+using LucasRosinelli.Rate.SharedKernel.Contracts;
+using LucasRosinelli.Rate.SharedKernel.Events;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +25,16 @@ namespace LucasRosinelli.Rate.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<IDataContext, RateDataContextFromEcbXml>();
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+            services.AddTransient<IReferenceStatisticRepository, ReferenceStatisticRepository>();
+
+            services.AddTransient<IReferenceStatisticApplicationService, ReferenceStatisticApplicationService>();
+
+            services.AddTransient<IHandler<DomainNotification>, DomainNotificationHandler>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

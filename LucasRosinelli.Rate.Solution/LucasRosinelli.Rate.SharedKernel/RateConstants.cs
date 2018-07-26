@@ -1,4 +1,6 @@
-﻿namespace LucasRosinelli.Rate.SharedKernel
+﻿using System.Globalization;
+
+namespace LucasRosinelli.Rate.SharedKernel
 {
     /// <summary>
     /// Constants shared through solution.
@@ -47,6 +49,10 @@
         /// Assertion argument between.
         /// </summary>
         public const string AssertArgumentBetween = "AssertArgumentBetween";
+        /// <summary>
+        /// Assertion data context load fail.
+        /// </summary>
+        public const string AssertDataContextLoadFail = "AssertDataContextLoadFail";
 
         #endregion
 
@@ -56,6 +62,31 @@
         /// Message not identified.
         /// </summary>
         public const int MessageNotIdentified = -1;
+
+        #endregion
+
+        #region Util
+
+        /// <summary>
+        /// Culture name: English (en).
+        /// </summary>
+        public const string CultureInfoNameEnglish = "en";
+        /// <summary>
+        /// Culture information: English (en).
+        /// </summary>
+        public static readonly CultureInfo CultureInfoEnglish;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Initializes culture.
+        /// </summary>
+        static RateConstants()
+        {
+            CultureInfoEnglish = new CultureInfo(RateConstants.CultureInfoNameEnglish);
+        }
 
         #endregion
     }

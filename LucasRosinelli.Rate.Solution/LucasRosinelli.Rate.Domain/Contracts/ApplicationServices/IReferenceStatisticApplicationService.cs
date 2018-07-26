@@ -8,6 +8,12 @@ namespace LucasRosinelli.Rate.Domain.Contracts.ApplicationServices
     public interface IReferenceStatisticApplicationService
     {
         /// <summary>
+        /// Gets the rate of a currency pair.
+        /// </summary>
+        /// <param name="currencyPair">Currency pair.</param>
+        /// <returns>Rate.</returns>
+        decimal GetRate(string currencyPair);
+        /// <summary>
         /// Gets a reference statistic by currency.
         /// </summary>
         /// <param name="currency">Currency.</param>
