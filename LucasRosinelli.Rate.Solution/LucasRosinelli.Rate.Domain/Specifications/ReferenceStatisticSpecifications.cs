@@ -9,6 +9,8 @@ namespace LucasRosinelli.Rate.Domain.Specifications
     /// </summary>
     public static class ReferenceStatisticSpecifications
     {
+        #region Method
+
         /// <summary>
         /// Gets reference statistic by currency.
         /// </summary>
@@ -19,5 +21,7 @@ namespace LucasRosinelli.Rate.Domain.Specifications
             currency = currency?.ToUpper();
             return x => x.Currency == currency;
         }
+
+        #endregion
     }
 }

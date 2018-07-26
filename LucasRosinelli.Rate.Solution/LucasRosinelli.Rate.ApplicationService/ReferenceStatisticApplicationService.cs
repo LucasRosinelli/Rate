@@ -2,21 +2,40 @@
 using LucasRosinelli.Rate.Domain.Contracts.Repositories;
 using LucasRosinelli.Rate.Domain.Entities;
 using LucasRosinelli.Rate.Infrastructure.Persistence;
-using LucasRosinelli.Rate.SharedKernel.Contracts;
-using LucasRosinelli.Rate.SharedKernel.Events;
 using LucasRosinelli.Rate.SharedKernel.Validation;
 
 namespace LucasRosinelli.Rate.ApplicationService
 {
+    /// <summary>
+    /// Reference statistics business intelligence.
+    /// </summary>
     public class ReferenceStatisticApplicationService : ApplicationServiceBase, IReferenceStatisticApplicationService
     {
+        #region Field
+
+        /// <summary>
+        /// Reference statistics data persistence.
+        /// </summary>
         private readonly IReferenceStatisticRepository _repository;
 
-        public ReferenceStatisticApplicationService(IReferenceStatisticRepository repository, IUnitOfWork unitOfWork, IHandler<DomainNotification> notifications)
-            : base(unitOfWork, notifications)
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Initializes reference statistics business intelligence.
+        /// </summary>
+        /// <param name="repository">Reference statistics data persistence.</param>
+        /// <param name="unitOfWork">Unit of work for transactions.</param>
+        public ReferenceStatisticApplicationService(IReferenceStatisticRepository repository, IUnitOfWork unitOfWork)
+            : base(unitOfWork)
         {
             this._repository = repository;
         }
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Gets the rate of a currency pair.
@@ -58,5 +77,7 @@ namespace LucasRosinelli.Rate.ApplicationService
         {
             return this._repository.GetByCurrency(currency);
         }
+
+        #endregion
     }
 }

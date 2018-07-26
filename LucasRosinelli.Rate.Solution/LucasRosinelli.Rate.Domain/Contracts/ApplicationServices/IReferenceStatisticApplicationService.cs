@@ -7,6 +7,8 @@ namespace LucasRosinelli.Rate.Domain.Contracts.ApplicationServices
     /// </summary>
     public interface IReferenceStatisticApplicationService
     {
+        #region Methods
+
         /// <summary>
         /// Gets the rate of a currency pair.
         /// </summary>
@@ -19,5 +21,7 @@ namespace LucasRosinelli.Rate.Domain.Contracts.ApplicationServices
         /// <param name="currency">Currency.</param>
         /// <returns>Reference statistic if found; otherwise null.</returns>
         ReferenceStatistic GetByCurrency(string currency);
+
+        #endregion
     }
 }

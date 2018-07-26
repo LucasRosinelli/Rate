@@ -32,7 +32,10 @@ namespace LucasRosinelli.Rate.Api
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IReferenceStatisticRepository, ReferenceStatisticRepository>();
             services.AddTransient<IReferenceStatisticApplicationService, ReferenceStatisticApplicationService>();
-            services.AddTransient<IHandler<DomainNotification>, DomainNotificationHandler>();
+            services.AddSingleton<IHandler<DomainNotification>, DomainNotificationHandler>();
+
+            var serviceProvider = services.BuildServiceProvider();
+            DomainEvent.Container = new DomainEventsContainer(serviceProvider);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

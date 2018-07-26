@@ -7,11 +7,15 @@ namespace LucasRosinelli.Rate.Domain.Contracts.Repositories
     /// </summary>
     public interface IReferenceStatisticRepository
     {
+        #region Method
+
         /// <summary>
         /// Gets a reference statistic by currency.
         /// </summary>
         /// <param name="currency">Currency.</param>
         /// <returns>Reference statistic if found; otherwise null.</returns>
         ReferenceStatistic GetByCurrency(string currency);
+
+        #endregion
     }
 }

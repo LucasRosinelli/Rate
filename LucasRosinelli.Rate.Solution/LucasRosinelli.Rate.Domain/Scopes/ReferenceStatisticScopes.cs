@@ -8,6 +8,8 @@ namespace LucasRosinelli.Rate.Domain.Scopes
     /// </summary>
     public static class ReferenceStatisticScopes
     {
+        #region Method
+
         /// <summary>
         /// Asserts reference statistic is valid for creation.
         /// </summary>
@@ -20,5 +22,7 @@ namespace LucasRosinelli.Rate.Domain.Scopes
                 AssertionConcern.AssertValueIsGreaterThanZero(referenceStatistic.Rate, "Rate must be greater than zero.")
             );
         }
+
+        #endregion
     }
 }

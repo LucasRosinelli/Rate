@@ -9,6 +9,9 @@ using System.Xml.XPath;
 
 namespace LucasRosinelli.Rate.Infrastructure.Persistence.DataContext
 {
+    /// <summary>
+    /// Data context specific for European Central Bank XML.
+    /// </summary>
     public class RateDataContextFromEcbXml : IDataContext
     {
         #region IDataContext implementation
@@ -184,7 +187,8 @@ namespace LucasRosinelli.Rate.Infrastructure.Persistence.DataContext
         /// </summary>
         public RateDataContextFromEcbXml(IHandler<DomainNotification> notifications)
         {
-            this._expirationTimeInMinutes = 2;
+            // These settings (expiration time in minutes and ECB XML URL) can be loaded from settings
+            this._expirationTimeInMinutes = 60; // Data will be keep for this ammount of minutes, even if a different currencyPair is passed by
             this._ecbXmlUrl = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
             this._nextUpdate = DateTime.Now;
             _referenceStatistics = new HashSet<ReferenceStatistic>();

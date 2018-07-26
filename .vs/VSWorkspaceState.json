@@ -1,6 +1,20 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\LucasRosinelli.Rate.Solution",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.ApplicationService",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Domain",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Domain\\Contracts",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Domain\\Contracts\\ApplicationServices",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Domain\\Entities",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Domain\\Scopes",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Presentation.Console",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.SharedKernel",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.SharedKernel\\Contracts",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.SharedKernel\\Events",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.SharedKernel\\Helpers",
+    "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.SharedKernel\\Validation"
   ],
+  "SelectedNode": "\\LucasRosinelli.Rate.Solution\\LucasRosinelli.Rate.Presentation.Console\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
