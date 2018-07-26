@@ -11,6 +11,11 @@ namespace LucasRosinelli.Rate.Api.Controllers
         [Route("{currencyPair}")]
         public decimal Get([FromQuery]string currencyPair)
         {
+            /* Questions:
+             * 1) What should I do when "currencyPair" has no value?
+             * 2) What should I do when "currencyPair" doesn't match the pattern: length equals 6?
+             * 3) Qhat should I do when a currency (both or one of them) were not found?
+             */
             return 0.123456M;
         }
     }

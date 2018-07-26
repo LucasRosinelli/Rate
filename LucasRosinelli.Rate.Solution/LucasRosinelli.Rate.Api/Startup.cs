@@ -28,6 +28,7 @@ namespace LucasRosinelli.Rate.Api
 
             app.UseMvc(routes =>
             {
+                // Configures a route which requires the controller and assumes "Get" as default action
                 routes.MapRoute("MandatoryControllerOptionalAction", "{controller}/{action=Get}");
             });
         }
